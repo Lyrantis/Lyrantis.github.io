@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ben Edwards</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<h1 id="title">Ben Edwards</h1>
+							<p>Games Developer</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon solid fa-user">Project Details</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/ben-edwards-371951237/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+						<li><a href="https://github.com/BenEdwards-0612" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://twitter.com/Bedwards0612" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2>  <strong>Rapid - Side Scroller</strong></h2>
+								<p>The second prototype for the Rapid Games Prototyping module was a scrolling shooter, with the option of horizontal, vertical,
+								or a top down view that scrolled in each direction, we had to add features to create the shell of a game. I decided on a side scrolling
+								shooter that got progressively harder with elements of procedural content generation.</p>
+							</header>
+
+							<footer>
+								<a href="#about" class="button scrolly">Details</a>
+							</footer>
+
+						</div>
+					</section>
+				
+				<!-- About Me -->
+				<section id="about" class="two">
+					<div class="container">
+
+						<header>
+							<h2>About The Project</h2>
+						</header>
+
+						<div>
+							<div>
+								<img src="images/Framework Screenshot.png" />
+								<img src="images/pic02.jpg" />
+								<img src="images/pic02.jpg" />
+							</div>
+							<div>
+								<br> <p>
+	The framework contained a camera that faced to a 2D backround, on it was a wasp which the player controlled, and a butterfly enemy. The player could move in all directions, was
+	not restricted by the bounds of the screen and would die upon touching the butterfly. The game would continue running. The player could also use the mouse to shoot a stinger, which 
+	was capable of colliding with the enemy, destroying both game objects.<br /><br />
+
+	I chose the horizontal framework as it most closely followed my ambitions for the project. My overall idea was to take inspiration from Cuphead's "Run 'n' Gun" levels, 
+	pitting the player against waves of enemies before finishing with a stronger boss enemy. I reigned this in a little bit to be in line with the requirements of the assessment, 
+	and decided to focus on the run-up to the boss, rather than actually making a boss enemy. Insteadd, the game would get much harder as it went on so that eventually, 
+	the player would fall and their score would be given.<br /><br />
+
+	In terms of code, I started by restricting the player's movements to remain on the screen, I then changed the Butterfly script so that it would be destroyed when offscreen to
+	prevent unecessary memory usage. I then created an enemy spawner with a few parameters so I could alter how many enemies each wave spawned, how much time between each spawn, how
+	long between waves etc. These were all made public so that later on, I could dynamically change them during runtime. The enemy spawner also had to move along with the camera to make sure
+	enemies spawned in the correct place, regardless of how long the level had been running.<br /><br />
+
+	I also felt the need to create a few more enemy archetypes, I started by using the ship asset with a script I wrote to shoot down on the player, this worked especially well when I learnt
+	how to create a path, I implemented a system where, after a changable amount of time, this enemy would spawn, and follow a path which itself, followed the camera as it moved, this allowed
+	the illusiom of it using the screenbounds as limits, it shoots every few seconds. Again, this variable is changable to the requirements of the game. This interval between shots would shorten
+	as the game continued until it reached a minimum value to prevent the game from being too unfair. I could have also made the enemy follow the player slowly from above and shoot when close enough.<br /><br />
+
+	After much more development, I was left with a simple 2D game that greatly resembled a bullet hell game that gets progressively harder as you play and includes sounds, animations, different enemy
+	types, random generation, and an infinitely regenerating world that would store scores on a leaderboard and provide the player with an arcade style way of entering a name. I learnt a lot about
+	managing memory in C++, aswell as how to use pointers, references and destructors to ensure there are no memory leaks. If I had more time, I would have liked to focus more on creating even more
+	types of enemy, and more powerups than are currently present to deepen the gameplay.
+</p>
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+			</div>
+
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Ben Edwards. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
