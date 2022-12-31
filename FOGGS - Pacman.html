@@ -79,36 +79,43 @@
 						<div>
 							<div>
 								<img src="images/Framework Screenshot.png" />
-								<img src="images/pic02.jpg" />
-								<img src="images/pic02.jpg" />
 							</div>
 							<div>
-								<br> <p> The framework was capable of displaying a black screen with a simple pacman and munchie sprite on the creen. These were not animated, and the game had very little 
-								functionality. The player could only move right and their position was displayed to the screen. From this, we used lectures and our own knowledge to expand this
-								framework into a simple 2D game.<br /><br />
+								<br> <p>
+	The framework was capable of displaying a black screen with a simple pacman and munchie sprite on the creen. These were not animated, and the game had very little
+	functionality. The player could only move right and their position was displayed to the screen. From this, we used lectures and our own knowledge to expand this
+	framework into a simple 2D game.<br /><br />
 
-								I started by looking into the libraries we were provided with, and seeing what kinds of functionality they had. I then allowed the player to move in 4 directions
-								(up, down, left and right) using the WASD or arrow keys. Furthermore, I decided to make the walls wrap arround to eachother, allowing the player to quickly get from one side
-								of the play area to the other. I chose this over solid boundaries as I thought the added gameplay mechanic could give me the choice later on to either allow projectiles to wrap
-								 aswell as the player, to make the game harder, or restrice the places the player can do this using boundaries.<br /><br />
+	<div style="float: left">
+		<img src="images/FOGGS Populated.png" />
+	</div>
 
-								Collisions were not too hard to implement using rects, but I decided to take it a step further and use circle collision aswell, while not complex to add, it allowed more accurate
-								collision detection when dealing with the player and collectibles, which were circular at the time. Even though the player object has since changed sprite, and rectangles were more
-								suitable, preventing objects from spawning where one already was, or spawning close to the player was far more efficient with circles.<br /><br />
-								
-								I also experimented with the Graphics class provided, I learnt that, by doing some simple triganometry, I could put an angle in with a draw function, to rotate how a sprite is drawn,
-								without the need for an overly complex sprite sheet. I used this to create a new enemy type that would always face the player, and fire a projectile periodically. This, mixed with the 
-								enemy type that would follow the player, allowed me to edit their speeds and fire rate during run time, to make the game progressively harder to survive. This was fun, but the player
-								would either reach a point where no enemies would spawn, or would become overwhelmed by a high volume of enemies. I decided the best way to deal with this, would be to implement a method
-								of attack for the player. Using circle segment collision with a sprite I made representing a punch, I then used rotation to place it in the correct position in relation to the swing direction,
-								and added a health component to enemies and players. I designed sprites for the player taking damage and dying, aswell as a HUD element consisting of three hearts, which represented the player's
-								maximum health.
+	I started by looking into the libraries we were provided with, and seeing what kinds of functionality they had. I then allowed the player to move in 4 directions
+	(up, down, left and right) using the WASD or arrow keys. Furthermore, I decided to make the walls wrap arround to eachother, allowing the player to quickly get from one side
+	of the play area to the other. I chose this over solid boundaries as I thought the added gameplay mechanic could give me the choice later on to either allow projectiles to wrap
+	aswell as the player, to make the game harder, or restrice the places the player can do this using boundaries.<br /><br />
 
-								After much more development, I was left with a simple 2D game that greatly resembled a bullet hell game that gets progressively harder as you play and includes sounds, animations, different enemy
-								types, random generation, and an infinitely regenerating world that would store scores on a leaderboard and provide the player with an arcade style way of entering a name. I learnt a lot about 
-								managing memory in C++, aswell as how to use pointers, references and destructors to ensure there are no memory leaks. If I had more time, I would have liked to focus more on creating even more
-								types of enemy, and more powerups than are currently present to deepen the gameplay.
-								</p>
+	Collisions were not too hard to implement using rects, but I decided to take it a step further and use circle collision aswell, while not complex to add, it allowed more accurate
+	collision detection when dealing with the player and collectibles, which were circular at the time. Even though the player object has since changed sprite, and rectangles were more
+	suitable, preventing objects from spawning where one already was, or spawning close to the player was far more efficient with circles.<br /><br />
+
+	I also experimented with the Graphics class provided, I learnt that, by doing some simple triganometry, I could put an angle in with a draw function, to rotate how a sprite is drawn,
+	without the need for an overly complex sprite sheet. I used this to create a new enemy type that would always face the player, and fire a projectile periodically. This, mixed with the
+	enemy type that would follow the player, allowed me to edit their speeds and fire rate during run time, to make the game progressively harder to survive. This was fun, but the player
+	would either reach a point where no enemies would spawn, or would become overwhelmed by a high volume of enemies. I decided the best way to deal with this, would be to implement a method
+	of attack for the player. Using circle segment collision with a sprite I made representing a punch, I then used rotation to place it in the correct position in relation to the swing direction,
+	and added a health component to enemies and players. I designed sprites for the player taking damage and dying, aswell as a HUD element consisting of three hearts, which represented the player's
+	maximum health. I allowed the player to enter a three letter name in an old arcade style, which, if they placed in the top 10, would be added to a leaderboard.
+
+																																				<div style="float: right">
+																																					<img src="images/FOGGS - Name Entry.png" />
+																																				</div>
+
+	After much more development, I was left with a simple 2D game that greatly resembled a bullet hell game that gets progressively harder as you play and includes sounds, animations, different enemy
+	types, random generation, and an infinitely regenerating world that would store scores on a leaderboard and provide the player with an arcade style way of entering a name. I learnt a lot about
+	managing memory in C++, aswell as how to use pointers, references and destructors to ensure there are no memory leaks. If I had more time, I would have liked to focus more on creating even more
+	types of enemy, and more powerups than are currently present to deepen the gameplay.
+</p>
 							</div>
 						</div>
 
