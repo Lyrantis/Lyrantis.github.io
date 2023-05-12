@@ -56,10 +56,10 @@
 						<div class="container">
 
 							<header>
-								<h2>  <strong>Rapid - Side Scroller</strong></h2>
-								<p>The second prototype for the Rapid Games Prototyping module was a scrolling shooter, with the option of horizontal, vertical,
-								or a top down view that scrolled in each direction, we had to add features to create the shell of a game. I decided on a side scrolling
-								shooter that got progressively harder with elements of procedural content generation.</p>
+								<h2>  <strong>Rapid - Top Down Shooter</strong></h2>
+								<p>The fourth and final prototype in our Rapid Games Prototyping module was a top down shooter framework, it was given to us with very basic functionality, with little in the way of 
+								resources and premade assets to use, which presented the opportunity to put everything we have learnt this year to use. By default, the prototype contained a small room on a beach,
+								containing only a player, with premade animations and a very basic character controller. Other than that, everything was left down to me to create.</p>
 							</header>
 
 							<footer>
@@ -79,43 +79,51 @@
 
 						<div>
 							<div>
-								<img src="images/SideScroller Framework.png" />
+								<img src="images/P4 Gameplay 1.png" />
 								
 								
 							</div>
 							<div>
 								<br> <p>
-	The framework contained a camera that faced to a 2D backround, on it was a wasp which the player controlled, and a butterfly enemy. The player could move in all directions, was
-	not restricted by the bounds of the screen and would die upon touching the butterfly. The game would continue running. The player could also use the mouse to shoot a stinger horizontally, which 
-	was capable of colliding with the enemy, destroying both game objects.<br /><br />
+	I took heavy inspiration from similar games I have played such as Enter the Gungeon and Hotline Miami, taking elements such as their interesting weapon mechanics or 
+								style choices for my own use. I started off by creating a path leading out of the starting zone, and begun creating my first, very simple enemy: Syd the squid.
+								This enemy was largely to act as a supporting enemy, with a few dotted around as environmental hazards during busier fights. All it was really capable of was
+								firing a shot of ink forwards periodically, which would be destroyed after travelling too far, or collidign with a wall. I created a health component and projectile scripts to lay
+								the foundation for very simple combat. I wanted to focus on having a functional game before adding deeper mechanics. Once these were made, 
+								I ensured that the enemy could hit the player with projectiles, and begun work on the players weapon system.<br /><br />
 
-	I chose the horizontal framework as it most closely followed my ambitions for the project. My overall idea was to take inspiration from Cuphead's "Run 'n' Gun" levels, 
-	pitting the player against waves of enemies before finishing with a stronger boss enemy. I reigned this in a little bit to be in line with the requirements of the assessment, 
-	and decided to focus on the run-up to the boss, rather than actually making a boss enemy. Instead, the game would get much harder as it went on so that eventually, 
-	the player would fail and their score would be given.<br /><br />
+	The weapon system was the aspect of the game I wanted to spend the most time on refining, I planned from the very beginning to have a series of upgraes players could find that gave weapons new functionality,
+								this was something I managed to do, giving each weapon the ability to be used in several ways. Possible upgrades included new bullet effects such as fire damage, alternate fire modes,
+								stat upgrades, no reloads etc. This allowed players to be able to have a relatively unique feeling weapon each run, they were free to experiment and find what works for them personally.
+								I made sure each upgrade, including combinations, worked and felt fun, if I expand on this framewrok in the future, I plan on adding many more upgrades to enhance this unique feeling.
+								These upgrades were acquired by colliding with a weapon upgrade item, which could be found either scattered around the level, or as a rare drop from enemies. A UI element would then display
+								the two choices and when one was clicked on, it would upgrade the players weapon.<br /><br />
 	
 	<div style="float: left">
-		<img src="images/SideScroller1.png" />
+		<img src="images/P4 Upgrade Screen.png" />
 	</div>
 
-	In terms of code, I started by restricting the player's movements to remain on the screen, I then changed the Butterfly script so that it would be destroyed when offscreen to
-	prevent unecessary memory usage. I then created an enemy spawner with a few parameters so I could alter how many enemies each wave spawned, how much time between each spawn, how
-	long between waves etc. These were all made public so that later on, I could dynamically change them during runtime. The enemy spawner also had to move along with the camera to make sure
-	enemies spawned in the correct place, regardless of how long the level had been running.<br /><br />
+	I added several more enemy types to the framework, including a boss. There is a bear that charges at you upon getting close to it or damaging it, swinging a sword when close enough for medium damage, this served as 
+								the game's main enemy, so I gave it a decently high damage stat. There was also a "Cursed Greatwood", a large tree that would see the player and begin spawning waves of bats, if not dealt with,
+								it could be very easy to be overwhelmed by them, especially with slower firing weapons. It had high health, but no form of attack itself, so could be managed simply with a bit of strategy.
+								The bat enemy spawned was a simple, low health, low damage enemy that charged at the player, destroying itself and damaging them on impact. I used them in a few places in the framework in
+								 order to aid other enemies and create some more unique feeling fights. <br /><br />
 
-	I also felt the need to create a few more enemy archetypes, I started by using the ship asset with a script I wrote to shoot down on the player, this worked especially well when I learnt
-	how to create a path, I implemented a system where, after a changeable amount of time, this enemy would spawn, and follow a path which itself, followed the camera as it moved, this allowed
-	the illusiom of it using the screenbounds as limits, it shoots every few seconds. Again, this variable is changable to the requirements of the game. This interval between shots would shorten
-	as the game continued until it reached a minimum value to prevent the game from being too unfair. I could have also made the enemy follow the player slowly from above and shoot when close enough.<br /><br />
+	Then there was the boss: A large Minotaur. I sourced sprites from online and created a script, more fleshed out than the typical enemy one, to allow the boss to chase the player, attacking periodically. Attacks would be
+								chosen at random from a group dependent on the distance from the player. From upclose, it could swing its axe overhead, spin it round 360 degrees, or simply jab at the player. From a high enough distance, it would 
+								opt to instead either charge at the player, stopping on hit or after 3 seconds, or spawn a wave of bats to assault the player. The bats served as a great way to add another element of challenge, while
+								also serving to help the player by providing them with essential resources such as health and ammo, so they still have a fighting chance if the boss fight was long. Each attack had it's own damage, animations, 
+								behaviours and timings, giving a unique sense and ensuring the fight felt very differently when handled from different ranges. <br /><br />
 
 	<div style="float: right">
-		<img src="images/SideScrollerGameOver.png" />
+		<img src="images/P4 Boss Highlight.png" />
 	</div>
 
-	After much more development, I was left with a simple 2D game that greatly resembled a bullet hell game that gets progressively harder as you play and includes sounds, animations, different enemy
-	types, random generation, and an infinitely regenerating world that would store scores on a leaderboard and provide the player with an arcade style way of entering a name. I learnt a lot about
-	managing memory in C++, aswell as how to use pointers, references and destructors to ensure there are no memory leaks. If I had more time, I would have liked to focus more on creating even more
-	types of enemy, and more powerups than are currently present to deepen the gameplay.
+	I went on to add a few more features such as HUD, messages  direction the player, a locked door to access the boss, menu screens, etc. By the final submission date, I was left with a framework I was quite proud of, I had added a wide range of 
+								features not present in the framework, and was able to showcase some of the skills I have picked up working on the previous 3 prototypes. I plan on working on this project further in the future, the next things I would do
+								would be to improve the hitboxes of attacks, add new weapons, many more upgrades, unique interactions between upgrades, new enemies, and abilities such as a fire attack, shield or dodge roll. This was the final prototype for
+								the module, and served as a good highlight of everything I have learned over the semesters, I now feel much more comfortable with the Unity engine, and have a relatively broad knowledge of how various features and plugins
+								work, and how I can use them to enhance projects. 
 </p>
 							</div>
 						</div>
