@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ben Edwards</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/MeAvatar.jpg" alt="" /></span>
+							<h1 id="title">Ben Edwards</h1>
+							<p>Games Developer</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon solid fa-user">Project Details</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/ben-edwards-371951237/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+						<li><a href="https://github.com/BenEdwards-0612" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://twitter.com/Bedwards0612" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2>  <strong>Rapid - 2D Platformer</strong></h2>
+								<p>The third prototype in our Rapid Games Prototyping module was a 2D Platformer, much like with previous prototypes, it had some starting content but much less than previous ones.
+								The framework wsa capable of taking user inputs to control a player character, the player could move left, right and jump. These movements were not updated and were usinmg the old input system.  
+								The level provided was just a small starting area with some fat and some slanted edges.</p>
+							</header>
+
+							<footer>
+								<a href="#about" class="button scrolly">Details</a>
+							</footer>
+
+						</div>
+					</section>
+				
+				<!-- About Me -->
+				<section id="about" class="two">
+					<div class="container">
+
+						<header>
+							<h2>About The Project</h2>
+						</header>
+
+						<div>
+							<div>
+								<img src="images/P3_Screenshot_1.png" />
+								
+								
+							</div>
+							<div>
+								<br> <p>
+	I started off development for this prototype by researching similar games, my main points of reference were Hollow Knight and Celeste, two of my personal favourite games. I looked at their level design and how it paired
+	with their mechanics to make the game fun. Once I had a very rough idea of where I wanted to take the framework, I began changing the scripts provided, as they were not very flexible. I fixed the
+	player's inconsistent double jump height, and added animations for running and jumping. I then created a flat plane off to the right of the current level for testing purposes.<br /><br />
+
+	I added two different kinds of enemies to the framework, each with unique behaviours. The first was Bob the blob, this enemy's sole purpose was to traverse the platform he was placed on, attacking the player when they were infront
+	Initially, he simply had a hitbox that killed the player on entry, but this later evolved into a systgem where he would detect the player infront of him, and play an attack animation. I made the movement
+	system using a series of Unity's gizmos, something I had never touched, and wanted to experiment with. Bob would check that he was still on the ground, and check infront of him for the platform
+	edge, when that box was no longer colliding with the floor, he would pause briefly, before turning around and travelling in the opposite direction. Bob served as a really good hazard for the player to avoid,
+	providing a bit more challenge to the platforming.<br /><br />
+
+	<div style="float: left">
+		<img src="images/P3_Screenshot_2.png" />
+	</div>
+
+	The second enemy I added was an eagle, this enemy would fly above parts of the level, using a box collider to scan the area for the player. If it spotted them, it would swoop down, chasing them until either they
+	were hit, or they exited the attack range. I placed a few of these enemies and found them to be a very strategic enemy, quickly it became apparent that there were a few ways to best deal with this enemy, waiting out
+	of it's range or behind it to strike, or staying under it to avoid detection. It was a very fun enemy that I'm glad I implemented. When paired with Bob, the game suddenly became much harder.
+								The player was also given a very basic melee attack to create a very simple combat system that could easiuly be expanded on in the future. This gave the player options when it came to 
+								encounters with enemies, as they could choose to fight, or simply avoid the enemy.<br /><br />
+
+	I added a few more mechanics starting with gems, these were the collectible required to beat the level, I put together a home asset that, when collided with, would check the player's gem count, seeing
+								if it was high enough to allow them to win the game, if not, it showed a message to the screen, telling them to go and find more. These gems were worth 1000 points each, and could encourage a 
+								bit of competition if I made the game multiplayer in the future. I then made a health system and a lives system to allow the player to have a reason to avoid obstacles, needing to conserve
+								their life to be able to win the game. These were displayed on the screen, hearts for health, and fox head sprites for lives. Then I decided to add a cherry, which would heal the player 
+								a little bit when collided with, allowing more fast paced, reckless gameplay if the player prefers it. Finally, I created some moving platforms, which would parent the player when they stepped on
+								it, allowing movement without input, this was good because I ran into this issue with prototype 1, where the moving platforms were very unpleasant to use.<br /><br />
+
+	<div style="float: right">
+		<img src="images/P3_DeathScreen.png" />
+	</div>
+
+	Like all my prototypes, I created a few basiuc menus to allow the player a bit of breathing room when loading up the game, and between attempts. I made these using some of the game's sprites and while simple, they add a lot of character
+	to the prototype. I created an introduction message to tell the player their objective, and created some split paths and a hidden area for the player to explore, harder or more hidden areas tended to reward more 
+								gems as an incentive for the player to explore the level as much as possible, so that they are able to leave. Overall, I'm happy with how the prototype turned out, and if I work on it further, I would add
+								projectiles, more player abilities such as climbing, wall jumping or a more fleshed out combat system.
+</p>
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+			</div>
+
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Ben Edwards. All rights reserved.</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
