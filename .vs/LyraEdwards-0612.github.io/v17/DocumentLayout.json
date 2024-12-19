@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\Rapid - 2D Platformer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Rapid - 2D Platformer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CNAME.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CNAME||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\.idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\GEC - Mario Bros.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GEC - Mario Bros.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\FOGGS - Pacman.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FOGGS - Pacman.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Rapid - 2D Platformer.html",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\Rapid - 2D Platformer.html",
+              "RelativeDocumentMoniker": "Rapid - 2D Platformer.html",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\Rapid - 2D Platformer.html",
+              "RelativeToolTip": "Rapid - 2D Platformer.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-19T13:22:11.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CNAME.txt",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME.txt",
+              "RelativeDocumentMoniker": "CNAME.txt",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME.txt",
+              "RelativeToolTip": "CNAME.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-12-19T13:22:03.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CNAME",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME",
+              "RelativeDocumentMoniker": "CNAME",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\CNAME",
+              "RelativeToolTip": "CNAME",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-19T13:21:52.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\.idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore",
+              "RelativeDocumentMoniker": ".idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\.idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore",
+              "RelativeToolTip": ".idea\\.idea.BenEdwards-0612.github.io.dir\\.idea\\.gitignore",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAAAwAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-19T13:20:35.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\index.html",
+              "RelativeDocumentMoniker": "index.html",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\index.html",
+              "RelativeToolTip": "index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKEAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-19T13:08:09.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FOGGS - Pacman.html",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\FOGGS - Pacman.html",
+              "RelativeDocumentMoniker": "FOGGS - Pacman.html",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\FOGGS - Pacman.html",
+              "RelativeToolTip": "FOGGS - Pacman.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-19T13:07:36.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GEC - Mario Bros.html",
+              "DocumentMoniker": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\GEC - Mario Bros.html",
+              "RelativeDocumentMoniker": "GEC - Mario Bros.html",
+              "ToolTip": "C:\\Users\\e021351l\\Documents\\GitHub\\LyraEdwards-0612.github.io\\GEC - Mario Bros.html",
+              "RelativeToolTip": "GEC - Mario Bros.html",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAQwJAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-19T13:07:34.17Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
