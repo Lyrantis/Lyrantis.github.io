@@ -55,13 +55,15 @@
 						<div class="container">
 
 							<header>
-								<h2>  <strong>GEC - Mario Bros</strong></h2>
-								<p>For my GEC (Game Engine Creation) module, we were given a blank framework, and taked to create a relatively accurate version of the original Mario Bros arcade game.<br />
-								    This was to be done using C++ with SDL. We were allowed to take creative freedom if we liked, which I plan on doing over the summer, but I wanted an accurate recreation for submission.</p>
+								<h2>  <strong>AI for Games</strong></h2>
+								<p>In Level 5, one of the modules focused on creating artificial intelligence for games beyond what we had already done, I had created some basic AI in the past but this was merely pathfinding and basic behaviour trees,
+								whereas this module was centred more on the specific behaviours for the most part, as well as constructing my own more advanced decision making structures.<br />
+								    The framework given was created in the Unity Engine, however all of the behaviours were written in C# scripts, the engine was there as a way to encapsulate the code in a well presented fashion.</p>
 							</header>
 
 							<footer>
 								<a href="#about" class="button scrolly">Details</a>
+								<a href="https://github.com/Lyrantis/AI-for-Games" class="button scrolly">Github Repo</a>
 							</footer>
 
 						</div>
@@ -77,58 +79,131 @@
 
 						<div>
 							<div>
-								<img src="images/MarioLevel7.png" />
+								<img src="images/AI/DecisionMakingBasic.png" height="536" width="1025"/> <!-- REPLACE WITH VIDEO -->
 							</div>
 							<div>
-								<br> <p>
-	The framework was left entirely blank, so everything, including setup, had to be done ourselves. So, after adding SDL to the project, with necessary additions I would need later
-	such as TTF for font, Mixer for sound, and Image for images, I started simply by rendering a blank window that could be closed down by pressing the X button or pressing escape.
-	I then began familiarising myself with SDL by renering an image to the screen, assigned it a rectangle on the screen, and allowed it to be moved with player input.<br /><br />
+								<br>
 
-	<div style="float: left">
-		<img src="images/MarioLevel1.png" />
-	</div>
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Starting out</strong></h3>
+									</header>
+									<br />
+								</div>
+								The framework consisted of several scenes with various enemies and a player, visualising each of the algorithms constructd, those being our steering behaviours, pathfinding algoritms and decision making,
+								which also contained instances of the others as a culmination of the best behaviours in a final scene, where an AI agent was produced capable of surviving against the enemies by making smart decisions
+								about health, ammo and which weapon to use at a given time.<br /><br />
 
-	Over the next few weeks, we covered the basics of creating a 2D game in SDL, I quickly moved to a scene with a basic background and a Mario and Luigi character that could be moved
-	with WASD and the arrow keys, they were affected by gravity and stopped at the bottom of the screen, for now, that was it. So the next big step was making the level interactable.
-	This waas through the use of a level map, at the time this was hard coded, but would later be read in from a file. This checked collision with the players and any other characters
-	in the level so that they would not phase through platforms. This was an efficient way to sort collisions for surfaces that would never change, like the platforms, but tiles could be
-	changed later on if needed, such as the removal of a pow block. This, even with the more complicated code that was required to sort collision on all directions, was better than doing
-	simple box collision every frame. I added a deltaTime variable to keep the game running at a consistent speed, regardless of framerate, and over the next few weeks, built up a very basic
-	version of Mario Bros.<br /><br />
+								For the first scene, we had a simple visualisation of 2 cubes, measuring relevant information about their distance, the normals etc. and 2 unit vectors, with their cross and dot products. 
+								This is important as those calculations form the basis of how many of the behaviours function, the mathematics behind the functions are relatively simple, and I have done them previously, 
+								so this was not difficult to implement, but it was important to fully visualise how they were calculated and what they actually represent, in order to properly use them for more advanced operations.<br /><br />
 
-	At this point I had a game with Koopas, Coins, two characters, and working collisions. But nothing was animated and the level felt very small. So I sourced a set of sprites for the backgrounds
-	and characters from the original game, and increased the size of the window, this served both to improve the quality and look of the game, while also testing out the flexibility of the
-	level map aspect and collisions. Any hard coded values were adjusted to suit any size screen flexibly, I then animated mario, luigi and the Koopas, and allowed the players to die.
-	The game then looked much better, and as a result of this change, everything was made more modular. <br /><br />
+								<img src="images/AI/Maths.png" height="536" width="1025" /> <!-- REPLACE WITH VIDEO -->
+								<br />
 
-	In the final version of the game at the submission date, I had three different enemy variants: Shellcreepers (Koopas): That moved left or right depending on where they spawned, worked their way down the screen,
-	re-emerging at the top when they entered a pipe at the bottom. These were the simplest enemies, so I only awarded 800 points for defeating them. If they were flipped over, either by bumping into the platform from below,
-	or by hitting the POW block, they could be kicked off the stage. If they were allowed to flip back over however, they would become angry, turning red and moving much faster.<br />
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Steering Behaviours</strong></h3>
+									</header>
+									<br />
+								</div>
 
-	The second enemy variant was the SideStepper: A crab that would move much like a Koopa until damaged, at which point it would enrage, moving twice as fast until hit again, where it would flip over and be able to be killed.
-	This enemy would award 1000 points as it was tougher than the Koopa, but would only begin spawning in levels in stage 3 or above. I didn't run into many issues creating this enemy type, the only one I encountered was
-	a need for enemy i-frames to prevent the player from hitting them twice in one bump, but this was simple to implement.<br />
+								The next portion of development was centred around the actual steering behaviours, each scene showed the behaviour in isolation, with the exception of group movement, as this was a combination of a few.
+								Each of these behaviours had a relatively simple role, merely making the AI agent exhibit a particular, linear behaviour. Pursue and evade simply built on the seek and flee algorithms, that simply moved away
+								from the player's position at any given time by factoring in the movement of the player, if they were moving, it would predict their position and move towards/away from there respectivey, another little
+								improvement was that it scaled it's velocity proportionally to the player's distance from them, for evade, the closer the player was, the faster they would move, and vice versa for pursue. An interesting
+								dilemma I faced with the evade behaviour was that the agent would get trapped in a corner of the map if the player chased it in a set direction. The fix for this was to use a short-range raycast to determine
+								where the agent could move, and run that way against the wall, while not a perfect fix, when combined with the proportional speed, it was able to effectively evade the player.<br /><br />
 
-	The third and final enmy was the FighterFly: Instead of just charging left or right, it would jump, only moving when in the air,, while relatively slow in comparison to the others, it required precise timing to damage
-	as it could only be hit when it landed. Because of this, it only appears beginning at stage 5, and would award 1200 points.<br /><br />
+								Wander used a number of parameters to randomly move the agent around it's location by taking a random direction to move and adjusting it by a random amount between a given bound to move it in a random, but
+								not overly jittery fashion, much of the debudding of this algorithm came down to tweaking values to give a random enough movement that the AI didn't stray too far too fast, and to ensure it wasn't flittering
+								in opposite directions too unnaturally. After this, the behaviours became more intricate, requiring the development of "feelers" to raycast and determine the position of nearby allies in a given field of view.
+								For group movement, all involved agents then would adjust their position/velocities to account for eachother, moving as a group while maintaining a fair distance from eachother, this was effective for giving an illusion of
+								co-operation, while still allowing enemies to break off from the group if they fall behind or get too close to the player. Whereas collision avoidance allowed the agent to determine which direction is "safest"
+								to move in given where the other agents are currently going. There were some edge cases formed from the gaps between the angles of the feelers, but the more I added, the more computationally expensive it became.<br /><br />
 
-	<div style="float: right">
-		<img src="images/MarioScoreScreen.jpg" />
-	</div>
+								<div>
+									<img src="images/AI/GroupMovement.png" height="536" width="1025" /> <!-- REPLACE WITH VIDEO -->
+								</div>
 
-	The game also contained coins that would enter the stage when an enemy was defeated from the pipe on the same side as that enemy, these were all worth 800 points, but would not respawn when entering the pipe at the bottom of the screen,
-	They would simply be removed. Scores for each player could be tracked at the top of the screen, either side of the Top current score, a combined total of the current leading players' scores. Scores were stored in an external scoreboard,
-	any score related data was handled by a ScoreSystem singleton I created, The top score would be displayed, and after the players were killed, they would be taken to a screen where they could input their name and if they scored high enough,
-	they were entered on the board. Only 5 scores are held at a time on the scoreboard, but were saved when exiting the program if there was any changes.<br /><br />
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Pathfinding</strong></h3>
+									</header>
+									<br />
+								</div>
 
-	Overall I had a fleshed out version of Mario Bros complete with a scoreboard, animations, sound effects, and multiplayer. I plan on working on this project in future as  Ithoroughly enjoyed the development of it, my next steps will be to
-	add any of the original game's features that are not currently present, such as the fireballs, "SlipIce" enemies, and showcase/bonus stages. I believe I have left myself with an adaptable enough framework that this will not be a difficult task,
-	once I have done this, I will add a single player feature, animations to menus, and some original features such as new enemies or powerups. I will then move onto creating more content based off of the infamous Nintendo games <br /><br />
+								Once the steering bahviours were covered, I needed a pathfinding algorithm to actually allow the enemies to function in a real level, there were three algorithms developed, each building further upon the last,
+								the first was the Djikstra pathfinding algorithm, one of the oldest pathfinding algorithms, and the basis of the next few. Simple in it's execution, it was essentially a breadth first search, assessing each
+								neighbouring node of the current node, if the end was not found, it would add all of the nodes found and not already explored to the bottom of the list of nodes to be checked, it would then move the current node
+								to explored and repeat with the next node in the list until either the goal was found or there were no more nodes to explore. This algorithm guarentees the shortest path is found, however it is incredibly inefficient,
+								scaling very poorly with complexity and size of a map, especially if it contains open areas.<br /><br />
 
-	Overall Grade: 1st
-																																				
-</p>
+								Djikstra's high computrational cost is something largely solved by the next algorithm developed - A-Star (A*). A* works by creating a g-cost value for each node it finds, this being a combination of the current movement
+								distance to get to this node, and an estimate of the distance from the end. This estimate can be figured out in a range of ways that minorly change the way A* will prioritise nodes, the Manhattan distance uses the sum of the
+								distance in each axis, while the Euclidian distance is the direct linear distance between the points. The nodes are explored similarly to Djikstra, but it prioritises the nodes with the lowest g-cost. This always results in a
+								significantly reduced number of nodes that must be assessed. It is much better at handling open spaces and large maps, but still tends to assess a number of unnecessary nodes. There are many optimisations that can be made,
+								such as searching from both the start and endpoints simultaneously, either through alternating or using threads. This was something I implemented in my A* algorithm that led to an increased efficiency since the branches would meet
+								in the middle, completing a path. Another would be precomputing costs around certain parts of the map when the project is compiled, allowing the more complex parts of the map to be compiled faster.<br /><br />
+
+								<p>
+									The final algorithm produced was the most optimised, and the one used in the agents for the decision making scene, was Jump Point Search (JPS). JPS is a more advanced algorithm that does not assess each node individually as it explores
+									the map, it instead moves as far as it can in a given direction, if a point of interest is found, it adds it to the list to be assessed, it then moves adjacently to the path directly beside that one and does the same, each
+									point of interest also considers the node it "jumped" from, which is not the one being assessed, but the point in a linear distance from it that was used, for example, if JPS searches any nodes with a greater X and Y value than the
+									currently assessed node, it will move up the Y axis node by node, and check to the right of each of these nodes until it hits a wall, it then checks for interesting points known as forced neighbours and moves up the the next row.
+									interesting points include the end goal, points adjacent to the edge of a barrier, or anything that indicates potential progress in the path. This cuts down on the nodes explored massively, in some cases onyl assessing a handful of
+									different nodes, at it's absolute worst, it is as efficient as A*, and at it's best, can cut down well over 90% of the nodes that need to be explored. Below shows a visual representation of each algorithm's efficiency, generated through
+									a website called <strong><a href="https://qiao.github.io/PathFinding.js/visual/">pathfinding.js</a></strong>, and shows the sheer difference in speeds.
+								</p>
+
+								<div>
+									<img src="images/AI/Pathfinding_Djikstra.png" width="450" height="250" /><img src="images/AI/Pathfinding_A-Star.png" width="450" height="250" /><img src="images/AI/PathfindingJPS.png" width="450" height="250" />  <!-- PATHFINDING COMPARISON IMAGES -->
+								</div>
+
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Decision Making</strong></h3>
+									</header>
+									<br />
+								</div>
+
+								<div>
+									<p>
+										The final scene used everything created so far to put together a scene with a basic AI agent armed with a pistol that would fight enemy spiders until it died. I built upon this scene with ammo and health pickups, a few different weapons,
+										ammo limits, enemy types etc. I gave the enemies a basic behaiour depending on their type, but for the scene to work properly, the AI agent needed the ability to make many decisions, controlling it's short term goals, movement,
+										behaviour around enemies etc. I used a combination of a behaviour tree and fuzzy logic to allow the AI to flee enemies, attack them and seek towards a pickup of it's choice simultaneously. It ended up being far too strong initially,
+										being basically unkillable. The fuzzy logic gave weightings to certain choices based on different parameters, to combat the performance of the agent, I restricted it's abiliy to respond to enemies to only when it had line of sight,
+										after some value tweaks and balancing, the AI exhibited believable behaviours for dealing with the level. Able to effectively handle waves of enemies, being at low health etc, but not omniscient as to never get caught out from being too
+										confident, or unaware of enemies behind a wall. The image below shows an example of the AI using it's sniper since enemies are far away, and it has enough health that it does not need to worry about ensuring the enemy does not get close.
+									</p>
+
+									<div>
+										<img src="images/AI/DecisionMakingSniper.png" height="536" width="1025" />
+									</div>
+
+									<br />
+
+									<p>
+										For the final submission, I was confident that I had achieved the goal of creating some efficient pathfinding algorithms, believable steering behaviours, and an AI agent that makes smart, "human" decisions. I learnt a lot about decision making
+										structures, and JPS was completely new to me, so I am glad I was able to implement it effectively. The complexity of my AI agent was something I was proud of as it relied on a number of advanced decision making techniques working together in an
+										efficient and effective manner. There's some room for further developments if I come back to the project in the future, including adding more game mechanics, or creating a level that pits two teams of these agents against eachother, each with
+										slightly randomised behaviours, I would then give them a variety of objectives and modes to ensure they had fitting behaviours for a variety of situations. I may then explore the concept of machine learning for one of the teams to further
+										push their abilities.
+									</p>
+
+									<strong> <font size="50">Overall Grade: 1st</font></strong>
+								</div>
+
+
+
 							</div>
 						</div>
 
