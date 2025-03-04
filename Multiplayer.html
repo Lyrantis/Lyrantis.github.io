@@ -63,7 +63,7 @@
 
 							<footer>
 								<a href="#about" class="button scrolly">Details</a>
-								<a href="#about" class="button scrolly">Github Repo</a>
+								<a href="https://github.com/Lyrantis/MultiplayerGamesProgramming" class="button scrolly">Github Repo</a>
 							</footer>
 
 						</div>
@@ -79,61 +79,122 @@
 
 						<div>
 							<div>
-								<img src="images/MarioLevel7.png" />
+								<img src="images/Multiplayer/GameScreen.png" height="609" width="1431" />
 							</div>
 							<div>
-								<br>
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Starting Out</strong></h3>
+									</header>
+									<br />
+								</div>
 								<p>
 									We were given a base framework to expand upon, consisting of a pong-like game, with some basic input controlled movement and blocks affected by physics, from this we could take
-									our own initiative to decide what we wanted to make. I had a few ideas and after discussion with a lecturer decided on a tank combat game inspired by Wii Play's tanks game, 
-									I would have up to four players connect to a lobby and have the ability to move and fire projectiles to damage eachother, a very simple gameloop that still required a lot of 
-									consideration to play across a network, such as packet types and encryption strateges. 
+									our own initiative to decide what we wanted to make. I had a few ideas and after discussion with a lecturer decided on a tank combat game inspired by Wii Play's tanks game,
+									I would have up to four players connect to a lobby and have the ability to move and fire projectiles to damage eachother, a very simple gameloop that still required a lot of
+									consideration to play across a network, such as packet types and encryption strateges.
 								<p />
 
-								<div style="float: left">
-									<img src="images/MarioLevel1.png" />
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Synchronising Movement</strong></h3>
+									</header>
+									<br />
 								</div>
 
 								<p>
-									The first challenge I ran into was synchronising player movement across the network, this wasn't done already in the framework and was the first proper type of packet sent across 
-									the network, after only the debug message packet created. This would simply contain a sender ID and a message, when introducing the movement packet, it became necessary to make 
-									a family of packet classes inherting from a base packet with the essential data. The issue that arose was when the packet was received, the program did not know how to differentiate 
-									between the packet types, to solve this, I simply added an enum to allow packet types to be recognised and casted accordingly. Doing this allowed the packets to essentially interpret their 
+									The first challenge I ran into was synchronising player movement across the network, this wasn't done already in the framework and was the first proper type of packet sent across
+									the network, after only the debug message packet created. This would simply contain a sender ID and a message, when introducing the movement packet, it became necessary to make
+									a family of packet classes inherting from a base packet with the essential data. The issue that arose was when the packet was received, the program did not know how to differentiate
+									between the packet types, to solve this, I simply added an enum to allow packet types to be recognised and casted accordingly. Doing this allowed the packets to essentially interpret their
 									structure internally by calling the relevant constructor. They were sent over the network as strings from a json file, this lent itself well to encryption, which will be discussed later on.
 								<p />
 
 								<p>
 									Once the movement was synchronised, I was quite easily able to sync rotation, turret rotations and projectile positions etc. The next big challenge was down to the game mechanics themselves,
-									scores, rounds, title screen etc. This was not the focus of the project so I didn't expand on this a great deal, however, using the built in C# frameworks such as Xna was a challenge at first due to the 
-									framework's unusual design choices leading to unexpected behavviours that were hard to debug. Most of this time was spent modularising and structuring the framework to help make additions easier. I 
-									initially planned on adding mines that could be placed by players, however this would not have added anything of worth to the scope of the framework, so ultimately I decided against it. I adde 
+									scores, rounds, title screen etc. This was not the focus of the project so I didn't expand on this a great deal, however, using the built in C# frameworks such as Xna was a challenge at first due to the
+									framework's unusual design choices leading to unexpected behavviours that were hard to debug. Most of this time was spent modularising and structuring the framework to help make additions easier. I
+									initially planned on adding mines that could be placed by players, however this would not have added anything of worth to the scope of the framework, so ultimately I decided against it. I added walls
+									and the necessary collision functionality, as well as a health and damage system. This is an area I plan on developing a lot more now that the project has been submitted.
 								<p />
 
-								In the final version of the game at the submission date, I had three different enemy variants: Shellcreepers (Koopas): That moved left or right depending on where they spawned, worked their way down the screen,
-								re-emerging at the top when they entered a pipe at the bottom. These were the simplest enemies, so I only awarded 800 points for defeating them. If they were flipped over, either by bumping into the platform from below,
-								or by hitting the POW block, they could be kicked off the stage. If they were allowed to flip back over however, they would become angry, turning red and moving much faster.<br />
-
-								The second enemy variant was the SideStepper: A crab that would move much like a Koopa until damaged, at which point it would enrage, moving twice as fast until hit again, where it would flip over and be able to be killed.
-								This enemy would award 1000 points as it was tougher than the Koopa, but would only begin spawning in levels in stage 3 or above. I didn't run into many issues creating this enemy type, the only one I encountered was
-								a need for enemy i-frames to prevent the player from hitting them twice in one bump, but this was simple to implement.<br />
-
-								The third and final enmy was the FighterFly: Instead of just charging left or right, it would jump, only moving when in the air,, while relatively slow in comparison to the others, it required precise timing to damage
-								as it could only be hit when it landed. Because of this, it only appears beginning at stage 5, and would award 1200 points.<br /><br />
-
-								<div style="float: right">
-									<img src="images/MarioScoreScreen.jpg" />
+								<div>
+									<img src="images/Multiplayer/LobbyScreen.png" height="268" width="512" /><img src="images/Multiplayer/RoundOverScreen.png" height="268" width="512" />
 								</div>
 
-								The game also contained coins that would enter the stage when an enemy was defeated from the pipe on the same side as that enemy, these were all worth 800 points, but would not respawn when entering the pipe at the bottom of the screen,
-								They would simply be removed. Scores for each player could be tracked at the top of the screen, either side of the Top current score, a combined total of the current leading players' scores. Scores were stored in an external scoreboard,
-								any score related data was handled by a ScoreSystem singleton I created, The top score would be displayed, and after the players were killed, they would be taken to a screen where they could input their name and if they scored high enough,
-								they were entered on the board. Only 5 scores are held at a time on the scoreboard, but were saved when exiting the program if there was any changes.<br /><br />
+								<div>
+									<p>
+										An important step of the synchronisation was ensuring each player was assigned a proper ID, this became more challenging with the addition of lobbies, where a player's network ID would not necessarily
+										match their lobby ID. The server would be tasked with managing the lobby IDs accordingly, and hosting the lobbies themselves. Packets had to be given extra information including lobby ID when encessary to
+										ensure they were only sent to the clients that need the information. This caused a large amount of errors including clients being assigned the incorrect ID, and the server updating a player's position in
+										lobbies other than their own. It took a while to debug and bugfix but eventually worked well. I could then move onto making lobbies joinable on selection as opposed to auto-joining upon logging into the server.
+										Player spawn positions in the level could easily be adjusted depending on how many players connect.
+									<p />
+								</div>
+								
 
-								Overall I had a fleshed out version of Mario Bros complete with a scoreboard, animations, sound effects, and multiplayer. I plan on working on this project in future as  Ithoroughly enjoyed the development of it, my next steps will be to
-								add any of the original game's features that are not currently present, such as the fireballs, "SlipIce" enemies, and showcase/bonus stages. I believe I have left myself with an adaptable enough framework that this will not be a difficult task,
-								once I have done this, I will add a single player feature, animations to menus, and some original features such as new enemies or powerups. I will then move onto creating more content based off of the infamous Nintendo games <br /><br />
+								<div>
+									<img src="images/Multiplayer/MultipleLobbies.png" height="536" width="1025" />
+								</div>
 
-								Overall Grade: 1st
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Transfer Protocols</strong></h3>
+									</header>
+									<br />
+								</div>
+
+								<p>
+									Sending packets over the network, initially was done with Transmission Control Protocol (TCP). TCP is reliable, establishing a port to port connection that guarentees all packets of data are sent together.
+									Either all of them arrive, or none of them do. While this is ideal for sending IDs, network keys etc. It's lack of speed starts to become an issue in realtime games, a good example is player position. In a
+									server running many games, sending many positions over a network, there may be some issues with latency. Packets arrive slow and as such, are always behind on the true position. Ruining the game experience
+									and leading to many potential desynchronisation issues. To combat this issue, I implemented a User Datagram Protocol (UDP). This allows packets to be sent on different routes, it does not guarentee their
+									arrival, but it doesn't need to. It is useful for things like position as dropping a frame or two is not often noticeable. While it sacrifices reliability, it more than makes up for it in terms of speed.
+									Being hugely faster than TCP allows more flexibility in what can be sent, and how much the server can handle. Neither are used in isolation however, as important server information, or game related things
+									that absolutely must be received are still done through TCP.
+								<p />
+
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Encryption</strong></h3>
+									</header>
+									<br />
+								</div>
+
+								<p>
+									In order to add some security, I opted to encrypt the packets before sending them, this used a popular encryption method called cryptography. Cryptography uses a combination of "keys", which are long strings
+									of characters to encrypt a file. it can then only be decrypted with a corresponding private key. Private keys can only be accessed by a specific device, whereas public keys, as the name implies, are openly
+									available, being sent when the device connects. This is then used to encrypt files for that specific client. This removes any need to send a key over the network, making them highly secure, which is
+									further aided by having a longer key, the longer the key, the harder to brute force decrypt, becoming practically impossible at longer lengths. This was relatively straightforward to implement, and while
+									not necessary for the given project, is an important step in securing any kind of networking application to a reasonable extent. I would very much be interested in further exploring network security
+									protocols further down the line.
+								</p>
+
+								<div>
+									<br />
+									<br />
+									<header>
+										<h3> <strong style="float: left">Overall Thoughts</strong></h3>
+									</header>
+									<br />
+								</div>
+
+								<p>
+									Overall, I am relatively happy with the outcome of the game. It is capable of handling several servers of players playing at the same time, and has a robust packet system with plenty of room for future
+									expansion. The game is simple, yet enjoyable, and fully synchronised with eachother including failsafes like UDP packet orders, preventing old positions from overwriting the new ones and causing jittery,
+									inaccurate movement. This is a project I fully intend on expanding on in the future, giving functionality such as being able to leave lobbies, different game modes, and custom nicknames, along with expanding
+									my threading architecture, as it was the artefact's main point of feedback.
+								<p />
+
+								<strong> <font size="50">Artefact Grade: 1st</font></strong>
 
 								</p>
 							</div>

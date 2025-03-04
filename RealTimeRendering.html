@@ -5,157 +5,228 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Lyra Edwards</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+	<title>Lyra Edwards</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
 
-		<!-- Header -->
-			<div id="header">
+	<!-- Header -->
+	<div id="header">
 
-				<div class="top">
+		<div class="top">
 
-					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar48"><img src="images/LyraAvatar.jpg" alt="" /></span>
-							<h1 id="title">Lyra Edwards</h1>
-							<p>Games Developer</p>
-						</div>
-
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
-								<li><a href="#about" id="about-link"><span class="icon solid fa-user">Project Details</span></a></li>
-							</ul>
-						</nav>
-
-				</div>
-
-				<div class="bottom">
-
-					<!-- Social Icons -->
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/lyrantis/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-						<li><a href="https://github.com/Lyrantis" class="icon brands fa-github"><span class="label">Github</span></a></li>
-					</ul>
-
-				</div>
-
+			<!-- Logo -->
+			<div id="logo">
+				<span class="image avatar48"><img src="images/LyraAvatar.jpg" alt="" /></span>
+				<h1 id="title">Lyra Edwards</h1>
+				<p>Games Developer</p>
 			</div>
 
-		<!-- Main -->
-			<div id="main">
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+					<li><a href="#about" id="about-link"><span class="icon solid fa-user">Project Details</span></a></li>
+				</ul>
+			</nav>
 
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
-						<div class="container">
+		</div>
 
+		<div class="bottom">
+
+			<!-- Social Icons -->
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/lyrantis/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+				<li><a href="https://github.com/Lyrantis" class="icon brands fa-github"><span class="label">Github</span></a></li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- Intro -->
+		<section id="top" class="one dark cover">
+			<div class="container">
+
+				<header>
+					<h2>  <strong>Multiplayer Games Programming</strong></h2>
+					<p>
+						This module aimed to demonstrate our ability to produce a simple 2D game using C# and Microsoft's .net framework, we learnt many important
+						programming fundamentals such as thread-safe architecture, concurrency and network package encryption and transfer. The game itself was intended
+						to be relatively simple to allow more time to be spent on the networking architecture.
+					</p>
+				</header>
+
+				<footer>
+					<a href="#about" class="button scrolly">Details</a>
+					<a href="https://github.com/Lyrantis/MultiplayerGamesProgramming" class="button scrolly">Github Repo</a>
+				</footer>
+
+			</div>
+		</section>
+
+		<!-- About Me -->
+		<section id="about" class="two">
+			<div class="container">
+
+				<header>
+					<h2>About The Project</h2>
+				</header>
+
+				<div>
+					<div>
+						<img src="images/Multiplayer/GameScreen.png" height="609" width="1431" />
+					</div>
+					<div>
+						<div>
+							<br />
+							<br />
 							<header>
-								<h2>  <strong>GEC - Mario Bros</strong></h2>
-								<p>For my GEC (Game Engine Creation) module, we were given a blank framework, and taked to create a relatively accurate version of the original Mario Bros arcade game.<br />
-								    This was to be done using C++ with SDL. We were allowed to take creative freedom if we liked, which I plan on doing over the summer, but I wanted an accurate recreation for submission.</p>
+								<h3> <strong style="float: left">Starting Out</strong></h3>
 							</header>
-
-							<footer>
-								<a href="#about" class="button scrolly">Details</a>
-							</footer>
-
+							<br />
 						</div>
-					</section>
-				
-				<!-- About Me -->
-				<section id="about" class="two">
-					<div class="container">
-
-						<header>
-							<h2>About The Project</h2>
-						</header>
+						<p>
+							We were given a base framework to expand upon, consisting of a pong-like game, with some basic input controlled movement and blocks affected by physics, from this we could take
+							our own initiative to decide what we wanted to make. I had a few ideas and after discussion with a lecturer decided on a tank combat game inspired by Wii Play's tanks game,
+							I would have up to four players connect to a lobby and have the ability to move and fire projectiles to damage eachother, a very simple gameloop that still required a lot of
+							consideration to play across a network, such as packet types and encryption strateges.
+						<p />
 
 						<div>
-							<div>
-								<img src="images/MarioLevel7.png" />
-							</div>
-							<div>
-								<br> <p>
-	The framework was left entirely blank, so everything, including setup, had to be done ourselves. So, after adding SDL to the project, with necessary additions I would need later
-	such as TTF for font, Mixer for sound, and Image for images, I started simply by rendering a blank window that could be closed down by pressing the X button or pressing escape.
-	I then began familiarising myself with SDL by renering an image to the screen, assigned it a rectangle on the screen, and allowed it to be moved with player input.<br /><br />
-
-	<div style="float: left">
-		<img src="images/MarioLevel1.png" />
-	</div>
-
-	Over the next few weeks, we covered the basics of creating a 2D game in SDL, I quickly moved to a scene with a basic background and a Mario and Luigi character that could be moved
-	with WASD and the arrow keys, they were affected by gravity and stopped at the bottom of the screen, for now, that was it. So the next big step was making the level interactable.
-	This waas through the use of a level map, at the time this was hard coded, but would later be read in from a file. This checked collision with the players and any other characters
-	in the level so that they would not phase through platforms. This was an efficient way to sort collisions for surfaces that would never change, like the platforms, but tiles could be
-	changed later on if needed, such as the removal of a pow block. This, even with the more complicated code that was required to sort collision on all directions, was better than doing
-	simple box collision every frame. I added a deltaTime variable to keep the game running at a consistent speed, regardless of framerate, and over the next few weeks, built up a very basic
-	version of Mario Bros.<br /><br />
-
-	At this point I had a game with Koopas, Coins, two characters, and working collisions. But nothing was animated and the level felt very small. So I sourced a set of sprites for the backgrounds
-	and characters from the original game, and increased the size of the window, this served both to improve the quality and look of the game, while also testing out the flexibility of the
-	level map aspect and collisions. Any hard coded values were adjusted to suit any size screen flexibly, I then animated mario, luigi and the Koopas, and allowed the players to die.
-	The game then looked much better, and as a result of this change, everything was made more modular. <br /><br />
-
-	In the final version of the game at the submission date, I had three different enemy variants: Shellcreepers (Koopas): That moved left or right depending on where they spawned, worked their way down the screen,
-	re-emerging at the top when they entered a pipe at the bottom. These were the simplest enemies, so I only awarded 800 points for defeating them. If they were flipped over, either by bumping into the platform from below,
-	or by hitting the POW block, they could be kicked off the stage. If they were allowed to flip back over however, they would become angry, turning red and moving much faster.<br />
-
-	The second enemy variant was the SideStepper: A crab that would move much like a Koopa until damaged, at which point it would enrage, moving twice as fast until hit again, where it would flip over and be able to be killed.
-	This enemy would award 1000 points as it was tougher than the Koopa, but would only begin spawning in levels in stage 3 or above. I didn't run into many issues creating this enemy type, the only one I encountered was
-	a need for enemy i-frames to prevent the player from hitting them twice in one bump, but this was simple to implement.<br />
-
-	The third and final enmy was the FighterFly: Instead of just charging left or right, it would jump, only moving when in the air,, while relatively slow in comparison to the others, it required precise timing to damage
-	as it could only be hit when it landed. Because of this, it only appears beginning at stage 5, and would award 1200 points.<br /><br />
-
-	<div style="float: right">
-		<img src="images/MarioScoreScreen.jpg" />
-	</div>
-
-	The game also contained coins that would enter the stage when an enemy was defeated from the pipe on the same side as that enemy, these were all worth 800 points, but would not respawn when entering the pipe at the bottom of the screen,
-	They would simply be removed. Scores for each player could be tracked at the top of the screen, either side of the Top current score, a combined total of the current leading players' scores. Scores were stored in an external scoreboard,
-	any score related data was handled by a ScoreSystem singleton I created, The top score would be displayed, and after the players were killed, they would be taken to a screen where they could input their name and if they scored high enough,
-	they were entered on the board. Only 5 scores are held at a time on the scoreboard, but were saved when exiting the program if there was any changes.<br /><br />
-
-	Overall I had a fleshed out version of Mario Bros complete with a scoreboard, animations, sound effects, and multiplayer. I plan on working on this project in future as  Ithoroughly enjoyed the development of it, my next steps will be to
-	add any of the original game's features that are not currently present, such as the fireballs, "SlipIce" enemies, and showcase/bonus stages. I believe I have left myself with an adaptable enough framework that this will not be a difficult task,
-	once I have done this, I will add a single player feature, animations to menus, and some original features such as new enemies or powerups. I will then move onto creating more content based off of the infamous Nintendo games <br /><br />
-
-	Overall Grade: 1st
-																																				
-</p>
-							</div>
+							<br />
+							<br />
+							<header>
+								<h3> <strong style="float: left">Synchronising Movement</strong></h3>
+							</header>
+							<br />
 						</div>
 
+						<p>
+							The first challenge I ran into was synchronising player movement across the network, this wasn't done already in the framework and was the first proper type of packet sent across
+							the network, after only the debug message packet created. This would simply contain a sender ID and a message, when introducing the movement packet, it became necessary to make
+							a family of packet classes inherting from a base packet with the essential data. The issue that arose was when the packet was received, the program did not know how to differentiate
+							between the packet types, to solve this, I simply added an enum to allow packet types to be recognised and casted accordingly. Doing this allowed the packets to essentially interpret their
+							structure internally by calling the relevant constructor. They were sent over the network as strings from a json file, this lent itself well to encryption, which will be discussed later on.
+						<p />
+
+						<p>
+							Once the movement was synchronised, I was quite easily able to sync rotation, turret rotations and projectile positions etc. The next big challenge was down to the game mechanics themselves,
+							scores, rounds, title screen etc. This was not the focus of the project so I didn't expand on this a great deal, however, using the built in C# frameworks such as Xna was a challenge at first due to the
+							framework's unusual design choices leading to unexpected behavviours that were hard to debug. Most of this time was spent modularising and structuring the framework to help make additions easier. I
+							initially planned on adding mines that could be placed by players, however this would not have added anything of worth to the scope of the framework, so ultimately I decided against it. I added walls
+							and the necessary collision functionality, as well as a health and damage system. This is an area I plan on developing a lot more now that the project has been submitted.
+						<p />
+
+						<div>
+							<img src="images/Multiplayer/LobbyScreen.png" height="268" width="512" /><img src="images/Multiplayer/RoundOverScreen.png" height="268" width="512" />
+						</div>
+
+						<div>
+							<p>
+								An important step of the synchronisation was ensuring each player was assigned a proper ID, this became more challenging with the addition of lobbies, where a player's network ID would not necessarily
+								match their lobby ID. The server would be tasked with managing the lobby IDs accordingly, and hosting the lobbies themselves. Packets had to be given extra information including lobby ID when encessary to
+								ensure they were only sent to the clients that need the information. This caused a large amount of errors including clients being assigned the incorrect ID, and the server updating a player's position in
+								lobbies other than their own. It took a while to debug and bugfix but eventually worked well. I could then move onto making lobbies joinable on selection as opposed to auto-joining upon logging into the server.
+								Player spawn positions in the level could easily be adjusted depending on how many players connect.
+							<p />
+						</div>
+
+
+						<div>
+							<img src="images/Multiplayer/MultipleLobbies.png" height="536" width="1025" />
+						</div>
+
+						<div>
+							<br />
+							<br />
+							<header>
+								<h3> <strong style="float: left">Transfer Protocols</strong></h3>
+							</header>
+							<br />
+						</div>
+
+						<p>
+							Sending packets over the network, initially was done with Transmission Control Protocol (TCP). TCP is reliable, establishing a port to port connection that guarentees all packets of data are sent together.
+							Either all of them arrive, or none of them do. While this is ideal for sending IDs, network keys etc. It's lack of speed starts to become an issue in realtime games, a good example is player position. In a
+							server running many games, sending many positions over a network, there may be some issues with latency. Packets arrive slow and as such, are always behind on the true position. Ruining the game experience
+							and leading to many potential desynchronisation issues. To combat this issue, I implemented a User Datagram Protocol (UDP). This allows packets to be sent on different routes, it does not guarentee their
+							arrival, but it doesn't need to. It is useful for things like position as dropping a frame or two is not often noticeable. While it sacrifices reliability, it more than makes up for it in terms of speed.
+							Being hugely faster than TCP allows more flexibility in what can be sent, and how much the server can handle. Neither are used in isolation however, as important server information, or game related things
+							that absolutely must be received are still done through TCP.
+						<p />
+
+						<div>
+							<br />
+							<br />
+							<header>
+								<h3> <strong style="float: left">Encryption</strong></h3>
+							</header>
+							<br />
+						</div>
+
+						<p>
+							In order to add some security, I opted to encrypt the packets before sending them, this used a popular encryption method called cryptography. Cryptography uses a combination of "keys", which are long strings
+							of characters to encrypt a file. it can then only be decrypted with a corresponding private key. Private keys can only be accessed by a specific device, whereas public keys, as the name implies, are openly
+							available, being sent when the device connects. This is then used to encrypt files for that specific client. This removes any need to send a key over the network, making them highly secure, which is
+							further aided by having a longer key, the longer the key, the harder to brute force decrypt, becoming practically impossible at longer lengths. This was relatively straightforward to implement, and while
+							not necessary for the given project, is an important step in securing any kind of networking application to a reasonable extent. I would very much be interested in further exploring network security
+							protocols further down the line.
+						</p>
+
+						<div>
+							<br />
+							<br />
+							<header>
+								<h3> <strong style="float: left">Overall Thoughts</strong></h3>
+							</header>
+							<br />
+						</div>
+
+						<p>
+							Overall, I am relatively happy with the outcome of the game. It is capable of handling several servers of players playing at the same time, and has a robust packet system with plenty of room for future
+							expansion. The game is simple, yet enjoyable, and fully synchronised with eachother including failsafes like UDP packet orders, preventing old positions from overwriting the new ones and causing jittery,
+							inaccurate movement. This is a project I fully intend on expanding on in the future, giving functionality such as being able to leave lobbies, different game modes, and custom nicknames, along with expanding
+							my threading architecture, as it was the artefact's main point of feedback.
+						<p />
+
+						<strong> <font size="50">Artefact Grade: 1st</font></strong>
+
+						</p>
 					</div>
-				</section>
+				</div>
 
 			</div>
+		</section>
+
+	</div>
 
 
-		<!-- Footer -->
-			<div id="footer">
+	<!-- Footer -->
+	<div id="footer">
 
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Lyra Edwards. All rights reserved.</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-					</ul>
+		<!-- Copyright -->
+		<ul class="copyright">
+			<li>&copy; Lyra Edwards. All rights reserved.</li>
+			<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+		</ul>
 
-			</div>
+	</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-	</body>
+</body>
 </html>
