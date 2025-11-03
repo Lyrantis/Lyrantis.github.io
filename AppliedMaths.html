@@ -22,7 +22,7 @@
 						<div id="logo">
 							<span class="image avatar48"><img src="images/LyraAvatar.jpg" alt="" /></span>
 							<h1 id="title">Lyra Edwards</h1>
-							<p>Games Developer</p>
+							<p>Games Programmer</p>
 						</div>
 
 					<!-- Nav -->
@@ -55,9 +55,9 @@
 						<div class="container">
 
 							<header>
-								<h2>  <strong>GEC - Mario Bros</strong></h2>
-								<p>For my GEC (Game Engine Creation) module, we were given a blank framework, and taked to create a relatively accurate version of the original Mario Bros arcade game.<br />
-								    This was to be done using C++ with SDL. We were allowed to take creative freedom if we liked, which I plan on doing over the summer, but I wanted an accurate recreation for submission.</p>
+								<h2>  <strong>Applied Mathematics for Games</strong></h2>
+								<p>One of the most memorable modules from my second year. We were tasked with creating a simple 3D scene using DirectX11, and programming efficient physics algorithms<br />
+								    The version at submission included spacial partitioning, various interactions between different shaped objects, realistic resistance forces, and has a lot of room for future developments such as cloth physics</p>
 							</header>
 
 							<footer>
@@ -81,37 +81,22 @@
 							</div>
 							<div>
 								<br> <p>
-	The framework was left entirely blank, so everything, including setup, had to be done ourselves. So, after adding SDL to the project, with necessary additions I would need later
-	such as TTF for font, Mixer for sound, and Image for images, I started simply by rendering a blank window that could be closed down by pressing the X button or pressing escape.
-	I then began familiarising myself with SDL by renering an image to the screen, assigned it a rectangle on the screen, and allowed it to be moved with player input.<br /><br />
+								One of the major points of success in the project was the resistance force implementation: gravity, drag, friction etc. were all made with realism in mind, acting upon each object 
+								in ways dependent on the object's properties, which coulf be manually set. These included density, volume, and how rough the object was. 
+								This allowed objects to behave as expected when taken in isolation, a few issues arose when programming these, an interestign one was the need for a floor value for velocity,
+								not having one meant that objects would infinitely move, just at incredibly low velocities. Another interesting issue was caused by the nature of debugging physics on
+								an object with various forces acting, the introduction of new forces could cause issues that were hard to trace. To combat this, I disabled each force seperately, manually 
+								seeing which pairs of forces caused unexpected behaviours, then tracing through code to find any errors, be they in terms of logic or syntax.<br /><br />
 
 	<div style="float: left">
 		<img src="images/MarioLevel1.png" />
 	</div>
 
-	Over the next few weeks, we covered the basics of creating a 2D game in SDL, I quickly moved to a scene with a basic background and a Mario and Luigi character that could be moved
-	with WASD and the arrow keys, they were affected by gravity and stopped at the bottom of the screen, for now, that was it. So the next big step was making the level interactable.
-	This waas through the use of a level map, at the time this was hard coded, but would later be read in from a file. This checked collision with the players and any other characters
-	in the level so that they would not phase through platforms. This was an efficient way to sort collisions for surfaces that would never change, like the platforms, but tiles could be
-	changed later on if needed, such as the removal of a pow block. This, even with the more complicated code that was required to sort collision on all directions, was better than doing
-	simple box collision every frame. I added a deltaTime variable to keep the game running at a consistent speed, regardless of framerate, and over the next few weeks, built up a very basic
-	version of Mario Bros.<br /><br />
-
-	At this point I had a game with Koopas, Coins, two characters, and working collisions. But nothing was animated and the level felt very small. So I sourced a set of sprites for the backgrounds
-	and characters from the original game, and increased the size of the window, this served both to improve the quality and look of the game, while also testing out the flexibility of the
-	level map aspect and collisions. Any hard coded values were adjusted to suit any size screen flexibly, I then animated mario, luigi and the Koopas, and allowed the players to die.
-	The game then looked much better, and as a result of this change, everything was made more modular. <br /><br />
-
-	In the final version of the game at the submission date, I had three different enemy variants: Shellcreepers (Koopas): That moved left or right depending on where they spawned, worked their way down the screen,
-	re-emerging at the top when they entered a pipe at the bottom. These were the simplest enemies, so I only awarded 800 points for defeating them. If they were flipped over, either by bumping into the platform from below,
-	or by hitting the POW block, they could be kicked off the stage. If they were allowed to flip back over however, they would become angry, turning red and moving much faster.<br />
-
-	The second enemy variant was the SideStepper: A crab that would move much like a Koopa until damaged, at which point it would enrage, moving twice as fast until hit again, where it would flip over and be able to be killed.
-	This enemy would award 1000 points as it was tougher than the Koopa, but would only begin spawning in levels in stage 3 or above. I didn't run into many issues creating this enemy type, the only one I encountered was
-	a need for enemy i-frames to prevent the player from hitting them twice in one bump, but this was simple to implement.<br />
-
-	The third and final enmy was the FighterFly: Instead of just charging left or right, it would jump, only moving when in the air,, while relatively slow in comparison to the others, it required precise timing to damage
-	as it could only be hit when it landed. Because of this, it only appears beginning at stage 5, and would award 1200 points.<br /><br />
+								Another point of interest was the collision system, objects were made more modular using rigid bodies, static meshes, and other components as you would expect from a modern game engine. 
+								This again made debugging easier, but also made the program far more legible and logical. Colliders were added for each objec type, those being planes, boxes, spheres, and then the more advanced 
+								oriented boxes and custom meshes. The simple collisions were very simple, except when finding collsions between different types - spheres and boxes required finding the closest point to a sphere on 
+								the edge of a box, and determining if the distance to the centre of the sphere was less than the radius. If so, it was colliding, and forces would be appropriately applied. The main difficulty came from 
+								oriented bounding boxes, or OBBs. 
 
 	<div style="float: right">
 		<img src="images/MarioScoreScreen.jpg" />
