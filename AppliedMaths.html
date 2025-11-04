@@ -96,20 +96,27 @@
 								This again made debugging easier, but also made the program far more legible and logical. Colliders were added for each objec type, those being planes, boxes, spheres, and then the more advanced 
 								oriented boxes and custom meshes. The simple collisions were very simple, except when finding collsions between different types - spheres and boxes required finding the closest point to a sphere on 
 								the edge of a box, and determining if the distance to the centre of the sphere was less than the radius. If so, it was colliding, and forces would be appropriately applied. The main difficulty came from 
-								oriented bounding boxes, or OBBs. 
+								oriented bounding boxes, or OBBs. Finding a way to handle collisions between cubes at different angles was tricky, since typical AABB collision fails. Instead, an algorithm called Separating Axis Theorem (SAT).
+								SAT uses quaternions to take every possible axis two objects can overlap on, including the normal vectors (or local X, Y, Z) of each object, and the cross products of each of the objects edge pairs. 
+								This provides a total of 15 axes that required testing, and if even one was not overlapping, the objects were not colliding. This took many attempts, and proved difficult to debug due to the complex maths at work,
+								however it proved very accurate. I could then create the code for collision detection between OBBs and other shapes, such as planes or spheres, which came down to a simplified SAT algorithm - planes only care about one axis,
+								so finding the closest point on an OBB to that plane was not difficult, and for spheres, it again came down to finding the closest point on the OBB to the centre of the sphere, then determining distance against the radius.
 
 	<div style="float: right">
 		<img src="images/MarioScoreScreen.jpg" />
 	</div>
 
-	The game also contained coins that would enter the stage when an enemy was defeated from the pipe on the same side as that enemy, these were all worth 800 points, but would not respawn when entering the pipe at the bottom of the screen,
-	They would simply be removed. Scores for each player could be tracked at the top of the screen, either side of the Top current score, a combined total of the current leading players' scores. Scores were stored in an external scoreboard,
-	any score related data was handled by a ScoreSystem singleton I created, The top score would be displayed, and after the players were killed, they would be taken to a screen where they could input their name and if they scored high enough,
-	they were entered on the board. Only 5 scores are held at a time on the scoreboard, but were saved when exiting the program if there was any changes.<br /><br />
+								Once I had this, a glaring inaccuracy with the project was that there was no rotational velocity applied when two objects collide. To remedy this, I had to figure out how to determine the vector on which
+								the force acted, and how that force should be resolved. Interestingly, this became an issue when acting on OBBs, since the other AABBs could not rotate without their collision being broken. A potential 
+								future improvement could be to have cubes use OBBs and AABBs dependent on if they are axis aligned or not, but for the purpose of the assessment, they were left separate. I was also ver satisfied with my implementation 
+								of an octree, using a predefined depth, the space could be divided into 8 segments, then those again divided for each further depth, this allowed more efficient collision detection, as objects in different regions do not need 
+								to be checked against one another, it also leaves really adaptable options for future development, as a larger world could be loaded and unloaded dependent on the player position based on these sections, preventing the need 
+								to load a whole level at one time.<br /><br />
 
-	Overall I had a fleshed out version of Mario Bros complete with a scoreboard, animations, sound effects, and multiplayer. I plan on working on this project in future as  Ithoroughly enjoyed the development of it, my next steps will be to
-	add any of the original game's features that are not currently present, such as the fireballs, "SlipIce" enemies, and showcase/bonus stages. I believe I have left myself with an adaptable enough framework that this will not be a difficult task,
-	once I have done this, I will add a single player feature, animations to menus, and some original features such as new enemies or powerups. I will then move onto creating more content based off of the infamous Nintendo games <br /><br />
+								I am overall very pleased with the outcome of the assessment, I achieved what I set out to do and feel I have greatly deepened my understanding of physics programming, but also how advanced maths concepts 
+								can be used within games programming for simplicity and efficiency. I would like to further expand my knowledge by exploring cloth physics and vehicle physics, which I plan on coding in future since I have found this 
+								very enjoyable, and would enjoy getting to program more sophisticated physics systems within industry.
+								<br /><br />
 
 	Overall Grade: 1st
 																																				
