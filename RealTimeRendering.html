@@ -22,7 +22,7 @@
 			<div id="logo">
 				<span class="image avatar48"><img src="images/LyraAvatar.jpg" alt="" /></span>
 				<h1 id="title">Lyra Edwards</h1>
-				<p>Games Developer</p>
+				<p>Games Programmer</p>
 			</div>
 
 			<!-- Nav -->
@@ -55,17 +55,17 @@
 			<div class="container">
 
 				<header>
-					<h2>  <strong>Multiplayer Games Programming</strong></h2>
+					<h2>  <strong>Real-Time Rendering</strong></h2>
 					<p>
-						This module aimed to demonstrate our ability to produce a simple 2D game using C# and Microsoft's .net framework, we learnt many important
-						programming fundamentals such as thread-safe architecture, concurrency and network package encryption and transfer. The game itself was intended
-						to be relatively simple to allow more time to be spent on the networking architecture.
+						This was another level 5 module that I did as part of my degree, similar to Fundamentals of Game and Graphical Systems (FoGGS) in first year, the module intention was to 
+						introduce us to, and familiarise us with, a graphics API. For FoGGS, this was OpenGL, whereas for this module, we were working with DirectX11. DX11 felt like a slightly more 
+						modernised API to work with. Throughout the module, we learnt and implemented many concepts such as rendering shapes, texturing, shaders, terrain, post proccessing etc. 
 					</p>
 				</header>
 
 				<footer>
 					<a href="#about" class="button scrolly">Details</a>
-					<a href="https://github.com/Lyrantis/MultiplayerGamesProgramming" class="button scrolly">Github Repo</a>
+					<a href="https://github.com/Lyrantis/Real-Time-Rendering" class="button scrolly">Github Repo</a>
 				</footer>
 
 			</div>
@@ -81,110 +81,109 @@
 
 				<div>
 					<div>
-						<img src="images/Multiplayer/GameScreen.png" height="609" width="1431" />
+						<img src="images/Graphics/Thumbnail.png" height="609" width="1231" />
 					</div>
 					<div>
 						<div>
 							<br />
 							<br />
 							<header>
-								<h3> <strong style="float: left">Starting Out</strong></h3>
+								<h3> <strong>Starting Out</strong></h3>
 							</header>
 							<br />
 						</div>
 						<p>
-							We were given a base framework to expand upon, consisting of a pong-like game, with some basic input controlled movement and blocks affected by physics, from this we could take
-							our own initiative to decide what we wanted to make. I had a few ideas and after discussion with a lecturer decided on a tank combat game inspired by Wii Play's tanks game,
-							I would have up to four players connect to a lobby and have the ability to move and fire projectiles to damage eachother, a very simple gameloop that still required a lot of
-							consideration to play across a network, such as packet types and encryption strateges.
+							The framework given was incredibly simple, in order to add to it, I had to learn a lot about the rendering pipeline. Everything from
+							the verticies of the object, to texturing it, as well as matrix transformations to determine it's position and orientation in the world.
+							In order to effectively use these objects, I would need to also consider lighting and post processing. The camera was an interesting thing 
+							to need to develop, there were a few different types of camera: static, moveable and follow. Each is typically used for a different purpose, 
+							and for the sake of the assessment, we had to do atleast one of each that the user could freely swap between.
 						<p />
 
 						<div>
 							<br />
 							<br />
 							<header>
-								<h3> <strong style="float: left">Synchronising Movement</strong></h3>
+								<h3> <strong>Basic shapes and Texturing</strong></h3>
 							</header>
 							<br />
 						</div>
 
 						<p>
-							The first challenge I ran into was synchronising player movement across the network, this wasn't done already in the framework and was the first proper type of packet sent across
-							the network, after only the debug message packet created. This would simply contain a sender ID and a message, when introducing the movement packet, it became necessary to make
-							a family of packet classes inherting from a base packet with the essential data. The issue that arose was when the packet was received, the program did not know how to differentiate
-							between the packet types, to solve this, I simply added an enum to allow packet types to be recognised and casted accordingly. Doing this allowed the packets to essentially interpret their
-							structure internally by calling the relevant constructor. They were sent over the network as strings from a json file, this lent itself well to encryption, which will be discussed later on.
+							Initially, to understand the process of rendering a shape, I created a simple list of vertices and indices that the GPU would iterate through
+							and draw triangles from to form the complete shape, each side was then given a different colour by passing values into the buffer. Once this was working,
+							the next logical step was to add some lighting, I chose a Phong lighting model since it was easy to understand, each lighting value has its own 
+							unique effects on the appearance of an object. Ambient light was a constant level of light from the object, making it clearly visible from anywhere in the scene, 
+							regardless of the incoming lights. Diffuse refers to the reflection ratio for any light on the object, directly affecting how bright an object appears in the light. 
+							Specular is slightly more complicated, but simply refers to the intensity of the centre of the beam of light hitting an object, it is the small glow that 
+							appears from the direction of incoming light, it helps objects shine and appear real.
+
 						<p />
 
 						<p>
-							Once the movement was synchronised, I was quite easily able to sync rotation, turret rotations and projectile positions etc. The next big challenge was down to the game mechanics themselves,
-							scores, rounds, title screen etc. This was not the focus of the project so I didn't expand on this a great deal, however, using the built in C# frameworks such as Xna was a challenge at first due to the
-							framework's unusual design choices leading to unexpected behavviours that were hard to debug. Most of this time was spent modularising and structuring the framework to help make additions easier. I
-							initially planned on adding mines that could be placed by players, however this would not have added anything of worth to the scope of the framework, so ultimately I decided against it. I added walls
-							and the necessary collision functionality, as well as a health and damage system. This is an area I plan on developing a lot more now that the project has been submitted.
-						<p />
+							The next step was improving the way mesh information was stored and given, the basic pyramids and cubes were wasy, but inflexible. The best way to do this 
+							was with an OBJ loader, which takes an OBJ file, and interprets its contents to give any needed information about the points on the object. This could be paired 
+							with a JSON file that held information regarding the properties of objects, including their texture, default size etc. The objects could then be given a simple class 
+							to allow pooling, and individually manipulated to build up the scene.
+						</p>
 
-						<div>
-							<img src="images/Multiplayer/LobbyScreen.png" height="268" width="512" /><img src="images/Multiplayer/RoundOverScreen.png" height="268" width="512" />
-						</div>
-
-						<div>
-							<p>
-								An important step of the synchronisation was ensuring each player was assigned a proper ID, this became more challenging with the addition of lobbies, where a player's network ID would not necessarily
-								match their lobby ID. The server would be tasked with managing the lobby IDs accordingly, and hosting the lobbies themselves. Packets had to be given extra information including lobby ID when encessary to
-								ensure they were only sent to the clients that need the information. This caused a large amount of errors including clients being assigned the incorrect ID, and the server updating a player's position in
-								lobbies other than their own. It took a while to debug and bugfix but eventually worked well. I could then move onto making lobbies joinable on selection as opposed to auto-joining upon logging into the server.
-								Player spawn positions in the level could easily be adjusted depending on how many players connect.
-							<p />
-						</div>
-
-
-						<div>
-							<img src="images/Multiplayer/MultipleLobbies.png" height="536" width="1025" />
-						</div>
 
 						<div>
 							<br />
 							<br />
 							<header>
-								<h3> <strong style="float: left">Transfer Protocols</strong></h3>
+								<h3> <strong>Lighting & Shaders</strong></h3>
 							</header>
 							<br />
 						</div>
 
 						<p>
-							Sending packets over the network, initially was done with Transmission Control Protocol (TCP). TCP is reliable, establishing a port to port connection that guarentees all packets of data are sent together.
-							Either all of them arrive, or none of them do. While this is ideal for sending IDs, network keys etc. It's lack of speed starts to become an issue in realtime games, a good example is player position. In a
-							server running many games, sending many positions over a network, there may be some issues with latency. Packets arrive slow and as such, are always behind on the true position. Ruining the game experience
-							and leading to many potential desynchronisation issues. To combat this issue, I implemented a User Datagram Protocol (UDP). This allows packets to be sent on different routes, it does not guarentee their
-							arrival, but it doesn't need to. It is useful for things like position as dropping a frame or two is not often noticeable. While it sacrifices reliability, it more than makes up for it in terms of speed.
-							Being hugely faster than TCP allows more flexibility in what can be sent, and how much the server can handle. Neither are used in isolation however, as important server information, or game related things
-							that absolutely must be received are still done through TCP.
+							Rendering the object's textures made them look significantly more like the object in question, particularly when paired with some post processing
+							to create an illusion of depth on a flat surface, however there was still an uncanny glow coming from the objects due to their textures directly
+							providing their brightness, which is then further modified by the abient and diffuse lighting values. The solution to this was the removal of the Phong
+							lighting model as a material set on each object, and simply using specular to detemrine where on an object should shine. Using a flat value would allow the
+							entirety of the object to appear matte or metallic, however I opted to use a specular map to determine which areas of a texture should be more reflective.
+							The benefit of this was creating a believable material appearance on each object. The image below shows how this looked on the crate.
 						<p />
+
+						<div>
+							<img src="images/Graphics/Crate.png" height="536" width="536" />
+						</div>
+
+						<p>
+							I could then begin working on some interesting post processing, I introduced the ability for a mesh to be completely transparent in the middle of it, this worked 
+							by checking the texture map and culling certain pixels. In the project, I used this for a rotating tree texture, and a chain link fence object. But the applications 
+							for this are plentiful, and would allow for more advanced meshes and rendering techniques to be used further down the line of development, something I may work on post submission.
+						</p>
+
 
 						<div>
 							<br />
 							<br />
 							<header>
-								<h3> <strong style="float: left">Encryption</strong></h3>
+								<h3> <strong>Terrain</strong></h3>
 							</header>
 							<br />
 						</div>
 
 						<p>
-							In order to add some security, I opted to encrypt the packets before sending them, this used a popular encryption method called cryptography. Cryptography uses a combination of "keys", which are long strings
-							of characters to encrypt a file. it can then only be decrypted with a corresponding private key. Private keys can only be accessed by a specific device, whereas public keys, as the name implies, are openly
-							available, being sent when the device connects. This is then used to encrypt files for that specific client. This removes any need to send a key over the network, making them highly secure, which is
-							further aided by having a longer key, the longer the key, the harder to brute force decrypt, becoming practically impossible at longer lengths. This was relatively straightforward to implement, and while
-							not necessary for the given project, is an important step in securing any kind of networking application to a reasonable extent. I would very much be interested in further exploring network security
-							protocols further down the line.
+							Until this point, the terrain of the world has been a flat plane, rendered simply as a flat square. For generated terrain, I began by changing
+							the plane to be a flat series of triangles, each representing an individual "node" on a grid. From this, I followed Frank Luna's Real Time Rendering
+							book to determine how to use a RAW file as a heightmap, it provided values that could be read by the program and interpreted as heights on a grid. The
+							spaces between could then be stretched to fill the gap and create a relatively smooth transition between heights. For future development, a blending map
+							can be used to help seamlessly blend between various textures at various heights, such as sand, grass, stone and snow etc. To give the appearence of
+							beaches and mountains.
 						</p>
 
 						<div>
+							<img src="images/Graphics/Terrain.png" height="536" width="1025" />
+						</div>
+
+						<div>
 							<br />
 							<br />
 							<header>
-								<h3> <strong style="float: left">Overall Thoughts</strong></h3>
+								<h3> <strong>Overall Thoughts</strong></h3>
 							</header>
 							<br />
 						</div>
@@ -196,7 +195,7 @@
 							my threading architecture, as it was the artefact's main point of feedback.
 						<p />
 
-						<strong> <font size="50">Artefact Grade: 1st</font></strong>
+						<strong> <font size="50">Overall Grade: 1st</font></strong>
 
 						</p>
 					</div>

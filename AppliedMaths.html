@@ -62,6 +62,7 @@
 
 							<footer>
 								<a href="#about" class="button scrolly">Details</a>
+								<a href="https://github.com/Lyrantis/Physics" class="button scrolly">Github Repo</a>
 							</footer>
 
 						</div>
@@ -77,7 +78,7 @@
 
 						<div>
 							<div>
-								<img src="images/MarioLevel7.png" />
+								<img src="images/Physics/Thumbnail.png" />
 							</div>
 							<div>
 								<br> <p>
@@ -87,10 +88,6 @@
 								not having one meant that objects would infinitely move, just at incredibly low velocities. Another interesting issue was caused by the nature of debugging physics on
 								an object with various forces acting, the introduction of new forces could cause issues that were hard to trace. To combat this, I disabled each force seperately, manually 
 								seeing which pairs of forces caused unexpected behaviours, then tracing through code to find any errors, be they in terms of logic or syntax.<br /><br />
-
-	<div style="float: left">
-		<img src="images/MarioLevel1.png" />
-	</div>
 
 								Another point of interest was the collision system, objects were made more modular using rigid bodies, static meshes, and other components as you would expect from a modern game engine. 
 								This again made debugging easier, but also made the program far more legible and logical. Colliders were added for each objec type, those being planes, boxes, spheres, and then the more advanced 
@@ -102,10 +99,10 @@
 								however it proved very accurate. I could then create the code for collision detection between OBBs and other shapes, such as planes or spheres, which came down to a simplified SAT algorithm - planes only care about one axis,
 								so finding the closest point on an OBB to that plane was not difficult, and for spheres, it again came down to finding the closest point on the OBB to the centre of the sphere, then determining distance against the radius.
 
-	<div style="float: right">
-		<img src="images/MarioScoreScreen.jpg" />
+	<div>
+		<img src="images/Physics/OBB.png" />
 	</div>
-
+								<br />
 								Once I had this, a glaring inaccuracy with the project was that there was no rotational velocity applied when two objects collide. To remedy this, I had to figure out how to determine the vector on which
 								the force acted, and how that force should be resolved. Interestingly, this became an issue when acting on OBBs, since the other AABBs could not rotate without their collision being broken. A potential 
 								future improvement could be to have cubes use OBBs and AABBs dependent on if they are axis aligned or not, but for the purpose of the assessment, they were left separate. I was also ver satisfied with my implementation 
