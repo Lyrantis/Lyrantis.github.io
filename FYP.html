@@ -57,12 +57,20 @@
 				<header>
 					<h2><u><strong>My Dissertation</strong></u></h2>
 					<p>
-						This is the most important module of my entire degree: my final year project. The nature of this module allowed us to choose our own 
-						topic, determining scope with the help of our supervisor. I chose something that blended some of my key areas of interest - Physics and Virtual Reality. 
-						I wanted to create a fun, immersive VR puzzle game centred around non-Euclidean geometry. Initially, my scope was far too high - wanting a non-Newtonian physics 
-						model on top of this, I will update this page as the project is developed, so stay tuned! It is ran through to February 2026. 
+						This is the most important module of my entire degree: my final year project. The nature of this module allowed us to choose our own
+						topic, determining scope with the help of our supervisor. My project aime to explore the way individuals interact with a non-Euclidean world,
+						mainly seeking to measure their engagement within the space, and determine whether the use of such mechanics work well within the context of virtual reality.
 					</p>
 				</header>
+
+				<div width="200px" margin="auto">
+					<p>
+						<h3><strong><u>Key Areas</u></strong></h3>
+						<strong>-C#</strong><br />
+						<strong>-Virtual Reality</strong><br />
+						<strong>-Unity</strong><br />
+					</p>
+				</div>
 
 				<footer>
 					<a href="#about" class="button scrolly">Details</a>
@@ -80,13 +88,90 @@
 				</header>
 
 				<div>
-					<div>
-						<img src="images/FYP/Thumbnail.png" height="609" width="1231" />
+					My initial pitch proposed the idea of a non-Euclidean VR puzzle game with a non-Newtonian physics engine, built in a bespoke engine. However I rapidly discovered 
+					the gargantuan task that would have been, and while the project will see extensive improvements over time, for the scope of a dissertation project, it was simplified 
+					to simply a non-Euclidean VR demo, allowing users to explore and interact with a non-Euclidean world while solving very basic puzzles. 
+					<br><br>
+
+					The first big question to decide was whether to use an existing game engine or create one specifically for the project. Building a game engine would likely have taken the 
+					entire timeframe of the project at minimum, and as such seemed far out of scope so I decided to utilise an existing engine and adapt it for my requirements. I had experience with the 
+					Unity engine, leading me to the decision to use it for the project. It would allow a baseline for rendering, physics etc. for me to focus on the project specific implementations. The issue however, 
+					was that Unity is a Euclidean game engine, so "true" non-Euclidean programming would not easily be possible, I had to get creative and figure out how to showcase such geometry using tricks. 
+					<br><br>
+
+					To start figuring this out, I played through some of the most well known non-Euclidean games out there to try and get an idea of how these games are designed, and how they might function. 
+					One of these games was Antichamber, a 2013 title by Alexander Bruce. This wasn't a VR title however it showcases many examples of simple non-Euclidean level layouts and interactions. It is 
+					very clever in the design, as puzzles slowly become more complex and rely on knowledge you gained earlier on. This was a highly critically acclaimed title, however many players found themselves 
+					losing interest due to the reliance on going the wrong way to solve the puzzle. Hyperbolica is another major non-Euclidean title, this one far more advanced in it's implementation, with the trade-off of not being 
+					a puzzle game, and serving as a showcase of how such a world may look and function. The level acts as a sandbox for players to experiment rather than involving any sense of progression. It is 
+					technically very impressive, many cited issue with this lack of progression and variety, struggling to find reason to return to the game. 
+					<br><br>
+
+					From this, I understood that I needed to focus on puzzle design. This posed a problem, as puzzles in non-Euclidean space realistically need to justify being in such spaces. If the puzzle would 
+					funtion identically in a Euclidean environment, it could easily be deemed unsuitable for the game at hand. Designing puzzles for this however is an extremely challenging task, Antichamber is the best 
+					example I have personally seen, but I wanted to create some more advanced puzzles, though research did not lead me to any particularly good ideas. It would be a difficult avenue of research to approach 
+					once I had the project functioning and ready for level building 
+					<br><br>
+
+					The first major challenge with creating the artefact, and the largest hurdle in development, was creating the illuson of non-Euclidean space, this would be achieved through portals. Many titles create 
+					this illusion in the same way, perhaps the most obvious being valve's Portal itself, moving you around space in impossible ways, this same trick can easily be utilised to create the 
+					non-Euclidean space I wanted through simply hiding it. Have these portals be wall to wall, and never explicitly show or explain the concept of them, using them as a mere mask to silently teleport players 
+					aroudn a space seamlessly, as if they are moving in impossible ways. To create this, I found a very useful video by Sebastian Lague (available <u><a href="https://www.youtube.com/watch?v=cWpFZbjtSQg">here </a></u>). Lague details the steps required for creating a functional portal 
+					system, and through following the steps, I recreated this, and adapted it as best I could for VR. This did not work as intended, even when testing Lague's code directly, the portals appeared cross eyed to the 
+					camera, creating an unstable, warped viewpoint, through a lot of experimentation, and following other tutorials, most notably the VR Portals tutorial series by Daniel Ilett (available <u><a href="https://danielilett.com/2019-12-01-tut4-intro-portals/">here</ahref></a></u>) I determined the 
+					issue to be due to the Universal Render Pipeline, Unity's newest and most popular render pipeline. This allowed for scriptable render passes, however was notoriously hard to work with in regards to virtual reality.
+					<br><br>
+
+					Because of this, I swapped the project over to HDRP (High Definition Render Pipeline), this was remarked as a highly efficient pipeline with a multitude of features out the box. It looked the best and ran the smoothest 
+					out of all of the render pipelines, the problem I quickly discovered however, is that it is not scriptable, meaning the portal shaders would be impossible to actually render. I turned to the remaining Built In pipeline, 
+					Unity's older and less supported render pipeline, though I had to use a newer version of the Unity Engine to allow compatibility with University PCs. This simply meant creating a VR project with URP, and manually disabling 
+					URP from the project. While this worked, it came with some additional challenges. Development ran incredibly smoothly using the MockHMD setup, a way of testing VR interactiosn without a headset. I tested the portals and created a level, 
+					however when I then put on the VR headset, I ran into an issue immediately - I couldn't actually see anything. This was strange, since the MockHMD viewport showed the scene exactly as it should look, yet the VR view could only see a skybox 
+					This turned out to be due to the nature of URP removal in a project. The shaders compiled were not compatible with a single pass render style, where one render pass is taken, with adjustments made for each eye, as opposed to one pass per eye. 
+					Because of this, I had to switch to Multi-Pass rendering, this allowed me to run the project, but not without a significant decrease in performance.
+					<br><br>
+
+					Things were now working, and I had some ideas of how to showcase the elements of the world, the problem was, I had a few limitations caused by the performance issues. Firstly, I could only realistically have a few portals visible at any time, my 
+					idea for a room full of portal "doors" that all interconnected would not be plausible, since the number ofrecursicve render passes would drop the framerate, leading to nausea and unintended game behaviour. The portals could 
+					be tempramental when performance tanked, allowing players to walk right through and end up stuck out of bounds, or not render at all. I had to be mindful of which portals were being considered at any given time, and their allowed recursion depth to prevent 
+					overloading the scene. Another major drawback was the complication of a dual camera player. Having two distinct eyes meant the portals would look different between each, creating consideratiosn for this allowed for smooth looking portals, at 
+					too high a performance cost. Without this, there was a visible "seam" at the edge of portals where the eye's position wasn't being considered. This broke the illusion of smooth portals and teleportation, but allowed the artefact to run.
+					<br><br>
+
+					Another simple yet intruiging element I created was a stencil shader, allowing for objects to be given materials that can only be viewed through a mask of a certain ID, this allowed the same physical space to appear to contain entirely different sets of objects, 
+					a concept I found interesting in regards to puzzle design and creating a sense of confusion and intrigue. A simple way I chose to showcase this was through an "impossible" cube, an area of space that, depending on the angle viewed from, contains different 
+					things. I threw in a few different environments, including a nod to Portal. <br><br>
+
+					<div float="centre">
+						<img src="Images/FYP/Impossible Cube.png">
 					</div>
+
+
+					By this point, the deadline was fast approaching, and I had spent a long time fixing issues with the engine and edge case bugs, so I made the difficult decision to move towards a showcase of these mechanics as opposed to a puzzle game, simply encouraging 
+					players to explore. Below is a video of the project at the time of submission, I gathered participants to play through the demo and express their feelings, overall, I got a lot of good feedback and a solid idea of how to take the project furhter in the future. 
+					Some of the main positive points were related to the intrigue and engagement created through not understanding the space around them, this was the exact intention of my dissertation, so it was reassuring to hear. Beyond this, participants stated a lot of interesrt5 in a full scale development, 
+					seeing a lot of potential in the mechanics, particularly the impossible cubes. One of the major drawbacks was the lack of artistic style. The intention was to create an Antichamber feel, simplistic but in a way that draws attention to the important aspects of the level.
+					This ultimately did not pay off, as exploration was boring, so some simple environmental improvements would be greatly appreciated. Another point was the lack of puzzles, making exploration feel forced, and leading to dificulty envisioning how a puzzle game might look.
+					<br><br>
+					<div>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/ycoGjxTMhfE?si=cYq2xHbV5ZrWAMdd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+					
+
+					<strong>Grade Outcome: 1st</strong>
+
 					<div>
 						
 					</div>
 				</div>
+<br>
+<br>
+				<header>
+					<h2>Post Submission</h2>
+
+					With GradEx fast approaching after our final deadline, I decided to work on the project further, to improve upon the elements that were not as well received, and expand upon my past ideas.
+					A full breakdown of this, including the current state of the project, are coming soon. So stay tuned! 
+				</header>
 
 			</div>
 		</section>
